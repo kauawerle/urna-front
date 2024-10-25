@@ -1,14 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import {HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Eleitor } from '../../../models/eleitor';
 import { EleitorService } from '../../../services/eleitor.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-eleitor-form',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [FormsModule],
   templateUrl: './eleitor-form.component.html',
   styleUrl: './eleitor-form.component.scss'
 })

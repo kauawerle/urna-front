@@ -13,7 +13,7 @@ export class EleitorService {
   constructor(private http: HttpClient) { }
 
   salvar(eleitor: Eleitor): Observable<string> {
-    return this.http.post<string>(`$(this.apiUrl}/salvar`, eleitor, {
+    return this.http.post<string>(`${this.apiUrl}/salvar`, eleitor, {
       responseType: 'text' as 'json'
     });
   }
