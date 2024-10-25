@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { Login } from '../../models/login/login';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MdbFormsModule],
+  imports: [MdbFormsModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {}
+export class LoginComponent {
+  login: Login = new Login();
+
+  router = inject(Router);
+
+  logar() {
+    console.log(this.login.username + ' ' + this.login.password)
+    if(this.login.username == 'admin' && this.login.password == 'admin') {
+      this.router.navigate(['home/candidato']);
+    } else {
+      alert('usuário incorreto');
+    }
+  }
+}
