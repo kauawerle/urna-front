@@ -1,42 +1,72 @@
-<table class="table align-middle">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Lorem</th>
-      <th scope="col">Ipsum</th>
-      <th scope="col">Dolor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Sit</td>
-      <td>Amet</td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm px-3" mdbRipple rippleColor="dark">
-          <i class="fas fa-times"></i>
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Adipisicing</td>
-      <td>Elit</td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm px-3" mdbRipple rippleColor="dark">
-          <i class="fas fa-times"></i>
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Hic</td>
-      <td>Fugiat</td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm px-3" mdbRipple rippleColor="dark">
-          <i class="fas fa-times"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h3>Listagem de carros</h3>
+          <div class="direita">
+
+            <button type="button" class="btn btn-primary btn-rounded" mdbRipple>
+              Novo
+            </button>
+
+        </div>
+        <br>
+          <table border="1" class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Codigo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (c of candidato; track $index) {
+              <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.nome_completo }}</td>
+                @if(c.codigoUnico){
+                  <td>{{ c.codigoUnico }}</td>
+              }@else{
+                <td> --- </td>
+              }
+                <td class="direita">
+                  <button type="button" class="btn btn-primary btn-rounded" mdbRipple >
+                    Editar
+                  </button>
+                  <button type="button" class="btn btn-danger btn-rounded" mdbRipple >
+                    Deletar
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+
+
+<ng-template #modalCarroDetalhe>
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<div class="modal-body">
+
+  <app-carrosdetails [carro]="carroEdit" (retorno)="retornoDetalhe($event)"></app-carrosdetails>
+
+</div>
+
+</ng-template> -->
