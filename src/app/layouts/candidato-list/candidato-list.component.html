@@ -5,15 +5,15 @@
       <div class="card">
         <div class="card-body">
 
-          <h3>Listagem de carros</h3>
+          <h3>Listagem de Candidato a Prefeito</h3>
           <div class="direita">
 
             <button type="button" class="btn btn-primary btn-rounded" mdbRipple>
               Novo
             </button>
 
-        </div>
-        <br>
+          </div>
+          <br>
           <table border="1" class="table table-striped">
             <thead>
               <tr>
@@ -26,18 +26,77 @@
             <tbody>
               @for (c of candidato; track $index) {
               <tr>
+                @if(c.cargo == 0){
                 <td>{{ c.id }}</td>
                 <td>{{ c.nome_completo }}</td>
                 @if(c.codigoUnico){
-                  <td>{{ c.codigoUnico }}</td>
-              }@else{
+                <td>{{ c.codigoUnico }}</td>
+                }@else{
                 <td> --- </td>
-              }
+                }
+                }@else {
+                  <td> ---</td>
+                }
                 <td class="direita">
-                  <button type="button" class="btn btn-primary btn-rounded" mdbRipple >
+                  <button type="button" class="btn btn-primary btn-rounded" mdbRipple>
                     Editar
                   </button>
-                  <button type="button" class="btn btn-danger btn-rounded" mdbRipple >
+                  <button type="button" class="btn btn-danger btn-rounded" mdbRipple>
+                    Deletar
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h3>Listagem de Candidato a Vereador</h3>
+          <div class="direita">
+
+            <button type="button" class="btn btn-primary btn-rounded" mdbRipple>
+              Novo
+            </button>
+
+          </div>
+          <br>
+          <table border="1" class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Codigo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (c of candidato; track $index) {
+              <tr>
+                @if(c.cargo === cargo){
+                  <td>{{ c.id }}</td>
+                  <td>{{ c.nome_completo }}</td>
+                  @if(c.codigoUnico){
+                  <td>{{ c.codigoUnico }}</td>
+                  }@else{
+                  <td> --- </td>
+                  }
+                  }@else {
+                    <td> ---</td>
+                  }
+                <td class="direita">
+                  <button type="button" class="btn btn-primary btn-rounded" mdbRipple>
+                    Editar
+                  </button>
+                  <button type="button" class="btn btn-danger btn-rounded" mdbRipple>
                     Deletar
                   </button>
                 </td>

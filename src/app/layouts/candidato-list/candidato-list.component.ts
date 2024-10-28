@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CandidatoService } from '../../../services/candidato.service';
 import { Candidato } from '../../models/candidato';
 import { HttpClientModule } from '@angular/common/http';
+import { Cargo } from '../../models/enums/cargos';
 
 @Component({
   selector: 'app-candidato-list',
@@ -12,14 +13,28 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class CandidatoListComponent {
   candidato: Candidato[] = [];
+  cargo!: Cargo;
+  cand = this.candidato.map(c => {
+    this.cargo = c.cargo
+  })
 
   candidatoService = inject(CandidatoService);
   constructor() {
     this.listAllPrefeitos();
+    this.listAllVereador();
   }
 
   listAllPrefeitos() {
     this.candidatoService.listAllPrefeitos().subscribe({
+      next: candidato => {
+        console.log(candidato)
+        this.candidato = candidato
+      }
+     }
+    );
+  }
+  listAllVereador() {
+    this.candidatoService.listAllVereadores().subscribe({
       next: candidato => {
         console.log(candidato)
         this.candidato = candidato

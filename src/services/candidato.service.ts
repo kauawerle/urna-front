@@ -17,4 +17,8 @@ export class CandidatoService {
   listAllPrefeitos(): Observable<Candidato[]>{
     return this.http.get<Candidato[]>(this.API+"/findAllPrefeito");
   }
+
+  listAllVereadores(): Observable<Candidato[]>{
+    return this.http.get<Candidato[]>(this.API+"/findAllVereador");
+  }
 }
